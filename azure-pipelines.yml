@@ -44,8 +44,12 @@ steps:
     python manage.py test --testrunner xmlrunner.extra.djangotestrunner.XMLTestRunner --no-input
   displayName: 'Run tests'
 
-- task: PublishTestResults@2
+- task: AzureRmWebAppDeployment@4
   inputs:
-    testResultsFiles: "**/TEST-*.xml"
-    testRunTitle: 'Python $(PYTHON_VERSION)'
-  condition: succeededOrFailed()
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Free Trial (f11689ce-81d2-47f0-bd7e-75382ce2fb9f)'
+    appType: 'webAppLinux'
+    WebAppName: 'buglgl'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    RuntimeStack: 'PYTHON|3.11'
+
