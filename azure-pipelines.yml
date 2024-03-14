@@ -63,6 +63,6 @@ steps:
     azureSubscription: 'Free Trial (f11689ce-81d2-47f0-bd7e-75382ce2fb9f)'
     appType: 'webAppLinux'
     WebAppName: 'buglgl'
-    packageForLinux: '$(Pipeline.Workspace)/drop/$(Build.BuildId).zip'
+    packageForLinux: '$(Pipeline.Workspace)/a/$(Build.BuildId).zip'
     RuntimeStack: 'PYTHON|3.11'
 
