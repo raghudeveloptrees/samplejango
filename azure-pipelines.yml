@@ -34,9 +34,12 @@ steps:
       print('##vso[task.setvariable variable=projectRoot]{}'.format(project_location))
 
 - script: |
+    python -m venv antenv
+    source antenv/bin/activate
     python -m pip install --upgrade pip setuptools wheel
     pip install -r requirements.txt
     pip install unittest-xml-reporting
+  workingDirectory: '$(projectRoot)'
   displayName: 'Install prerequisites'
 
 - script: |
@@ -52,12 +55,16 @@ steps:
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
 
+- upload: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+  displayName: 'Upload package'
+  artifact: drop
+      
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
     azureSubscription: 'Free Trial (f11689ce-81d2-47f0-bd7e-75382ce2fb9f)'
     appType: 'webAppLinux'
     WebAppName: 'buglgl'
-    packageForLinux: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    packageForLinux: '$(Pipeline.Workspace)/$(Build.BuildId).zip'
     RuntimeStack: 'PYTHON|3.11'
 
