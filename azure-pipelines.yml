@@ -37,15 +37,27 @@ steps:
     python -m pip install --upgrade pip setuptools wheel
     pip install -r requirements.txt
     pip install unittest-xml-reporting
+  workingDirectory: '$(projectRoot)'
   displayName: 'Install prerequisites'
 
-- script: |
-    pushd '$(projectRoot)'
-    python manage.py test --testrunner xmlrunner.extra.djangotestrunner.XMLTestRunner --no-input
-  displayName: 'Run tests'
-
-- task: PublishTestResults@2
+- task: ArchiveFiles@2
   inputs:
-    testResultsFiles: "**/TEST-*.xml"
-    testRunTitle: 'Python $(PYTHON_VERSION)'
-  condition: succeededOrFailed()
+    rootFolderOrFile: '$(projectRoot)'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
+
+- upload: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+  displayName: 'Upload package'
+  artifact: drop
+      
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Free Trial (f11689ce-81d2-47f0-bd7e-75382ce2fb9f)'
+    appType: 'webAppLinux'
+    WebAppName: 'buglgl'
+    packageForLinux: '$(Pipeline.Workspace)/a/$(Build.BuildId).zip'
+    RuntimeStack: 'PYTHON|3.11'
+
