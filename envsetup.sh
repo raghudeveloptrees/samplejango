@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo $PWD
+
 # Check if virtualenv is installed
 if command -v virtualenv &> /dev/null; then
     echo "virtualenv is already installed."
