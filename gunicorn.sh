@@ -1,10 +1,12 @@
 #!/bin/bash
 
-source antenv/bin/activate
-pip3 install gunicorn
-
-
 cd /var/lib/jenkins/workspace/samplejango
+
+source antenv/bin/activate
+pip3 install gunicorn 
+
+
+
 
 sudo cp -rf gunicorn.service /etc/systemd/system/
 
