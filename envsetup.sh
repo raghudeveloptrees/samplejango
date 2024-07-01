@@ -40,7 +40,6 @@ fi
 
 echo -e "\n\n\n"
 echo "Installing Requirements...."
-pip3 install gunicorn
 pip3 install -r requirements.txt
 echo "Requirements Installed."
 echo -e "\n\n\n"
