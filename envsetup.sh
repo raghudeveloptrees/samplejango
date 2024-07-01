@@ -11,6 +11,8 @@ else
     #sudo apt install nginx -y
 fi
 
+sudo apt install python3-venv -y
+python3 -m venv antenv
 
 if [ -d "antenv" ]
 then
