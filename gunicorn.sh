@@ -2,6 +2,8 @@
 
 cd /var/lib/jenkins/workspace/samplejango
 
+$pwd
+
 source antenv/bin/activate
 pip3 install gunicorn 
 
