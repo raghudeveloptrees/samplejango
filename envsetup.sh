@@ -1,8 +1,8 @@
 #!/bin/bash
 
-sudo mkdir /home/ubuntu/samplejango
-sudo cp -rf . /home/ubuntu/samplejango/
-cd /home/ubuntu/samplejango
+#sudo mkdir /home/ubuntu/samplejango
+#sudo cp -rf . /home/ubuntu/samplejango/
+#cd /home/ubuntu/samplejango
 echo $PWD
 
 # Check if virtualenv is installed

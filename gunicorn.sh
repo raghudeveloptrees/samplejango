@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /home/ubuntu/samplejango
+cd /var/lib/jenkins/workspace/samplejango
 
 $pwd
 
