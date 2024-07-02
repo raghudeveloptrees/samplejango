@@ -3,8 +3,8 @@ Description=gunicorn daemon
 After=network.target
 
 [Service]
-User=root
-Group=root
+User=jenkins
+Group=jenkins
 WorkingDirectory=/var/lib/jenkins/workspace/samplejango
 ExecStart=/usr/bin/gunicorn --workers 3 --bind unix:samplejango_app.sock jango1.wsgi:application
 
