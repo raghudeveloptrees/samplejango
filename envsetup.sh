@@ -18,6 +18,7 @@ else
     sudo apt install -y python3-pip
 fi
 
+python3 -m venv antenv
 
 if [ -d "antenv" ]
 then
