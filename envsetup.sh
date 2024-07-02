@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo mkdir /home/ubuntu/samplejango
-sudo cp . /home/ubuntu/samplejango/
+sudo cp -rf . /home/ubuntu/samplejango/
 cd /home/ubuntu/samplejango
 echo $PWD
 
