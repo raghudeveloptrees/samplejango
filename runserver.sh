@@ -6,5 +6,5 @@ python3 manage.py makemigrations
 python3 manage.py migrate --run-syncdb
 sudo service gunicorn restart
 sudo service nginx restart
-#gunicorn jango1.wsgi:application -b 0.0.0.0:8000
+gunicorn jango1.wsgi:application --bind=localhost:8000 & # --daemon
 #python3 manage.py runserver 0.0.0.0:8000
