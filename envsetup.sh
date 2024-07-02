@@ -9,15 +9,15 @@ echo $PWD
 if command -v virtualenv &> /dev/null; then
     echo "virtualenv is already installed."
 else
-    echo "Installing virtualenv......"
+    echo "Installing Packages......"
     sudo apt install -y python3-virtualenv
     sudo apt install virtualenv -y
     sudo apt install gunicorn -y
-    #sudo apt install nginx -y
+    sudo apt install python3-venv -y
+    sudo apt install nginx -y
+    sudo apt install -y python3-pip
 fi
 
-sudo apt install python3-venv -y
-python3 -m venv antenv
 
 if [ -d "antenv" ]
 then
@@ -34,16 +34,6 @@ echo -e "\n\n\n"
 echo "Activating the virtual environment"
 source antenv/bin/activate
 echo -e "\n\n\n"
-
-
-# Check if pip3 is installed
-echo "Checking for pip3 installation"
-if command -v pip3 &> /dev/null; then
-    echo "pip3 is already installed."
-else
-    echo "Installing pip3......."
-    sudo apt install -y python3-pip
-fi
 
 echo -e "\n\n\n"
 echo "Installing Requirements...."

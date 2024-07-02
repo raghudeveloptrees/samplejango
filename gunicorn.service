@@ -5,8 +5,8 @@ After=network.target
 [Service]
 User=root
 Group=root
-WorkingDirectory=/var/lib/jenkins/workspace/samplejango
-ExecStart=/var/lib/jenkins/workspace/samplejango/antenv/bin/gunicorn --workers 3 --bind unix:samplejango_app.sock jango1.wsgi:application
+WorkingDirectory=/home/ubuntu/samplejango
+ExecStart=/home/ubuntu/samplejango/antenv/bin/gunicorn --workers 3 --bind unix:samplejango_app.sock jango1.wsgi:application
 
 [Install]
 WantedBy=multi-user.target
