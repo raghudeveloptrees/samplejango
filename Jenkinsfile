@@ -26,13 +26,5 @@ pipeline{
                 '''
             }
         }
-        stage('Run server'){
-            steps {
-                sh '''
-                chmod +x runserver.sh
-                ./runserver.sh
-                '''
-            }
-        }
     }
 }
